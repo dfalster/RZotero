@@ -29,12 +29,23 @@ The best thing about Zotero is that it's open source and free. The software is m
 
 The best way of interacting with your Zotero library is to write some code which connects to Zotero's [server](http://www.zotero.org/support/dev/server_api/) or [Javascript](http://www.zotero.org/support/dev/client_coding/javascript_api) API.
 
+To access the API you'll need to set up API keys and save these in your
+Rpofile, e.g.
+
+```
+# Zotero
+options(ZoteroKey ="XXXXXX")
+options(ZoteroID ="XXXXX")
+```
+
+
+
 ```
 library(plyr)
 library(XML)
 library(httr)
 library(rjson)
-source('R/Rzotero.R')
+source('R/zoteroapi.R')
 
 # search for items
 out <- zotero_items(id=options("ZoteroID")[[1]], q='Falster')
