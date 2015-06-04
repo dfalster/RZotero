@@ -24,3 +24,24 @@ The best thing about Zotero is that it's open source and free. The software is m
 
 <blockquote class="twitter-tweet"><p><a href="https://twitter.com/adaptive_plant">@adaptive_plant</a> <a href="https://twitter.com/_inundata">@_inundata</a> one thing <a href="https://twitter.com/zotero">@zotero</a> does not lack is requests for features... much more helpful would be patches to 100+ tickets</p>&mdash; adam.smith (@adam42smith) <a href="https://twitter.com/adam42smith/statuses/325407488642011136">April 20, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+# Accessing Zotero via server API
+
+The best way of interacting with your Zotero library is to write some code which connects to Zotero's [server](http://www.zotero.org/support/dev/server_api/) or [Javascript](http://www.zotero.org/support/dev/client_coding/javascript_api) API.
+
+```
+library(plyr)
+library(XML)
+library(httr)
+library(rjson)
+source('R/Rzotero.R')
+
+# search for items
+out <- zotero_items(id=options("ZoteroID")[[1]], q='Falster')
+# Parse output
+x <- xmlToList(out)
+
+# return default for item type
+
+out <- zotero_get("journalArticle")
+```
